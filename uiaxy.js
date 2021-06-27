@@ -2,20 +2,21 @@
 
 var color = "#009688";
 var url = "http://8n9569u76.qicp.vip";
-var bb="爱学易 v1.1.1";
+var BBM="爱学易 v"
+var BBH=1.2;
+var AXYGX="gxaxy.js";
+var AXY="/axy.js";
+var AXYGL="/uiadmin.js";
 ui.layout(
     <drawer id="drawer">
         <vertical>
             <appbar>
                 
-                <toolbar id="toolbar" title="{{bb}}"/>
+                <toolbar id="toolbar" title="{{BBM+BBH}}"/>
                 <horizontal gravity="right">
                     <tabs id="tabs"/>
                     <button id="rz" text="日志" w="70" style="Widget.AppCompat.Button.Colored"/>
-                    <button id="kc" text="答题" w="70" style="Widget.AppCompat.Button.Colored"/>
-                    
-                    
-                    
+                    <button id="kc" text="答题" w="70" style="Widget.AppCompat.Button.Colored"/>                                                      
                 </horizontal>
             </appbar>
             <viewpager id="viewpager">
@@ -68,6 +69,11 @@ ui.layout(
                             <text text="首次使用:" gravity="left" />
                             <button id="xtsz" w="auto" text="系统权限" />
                             <button id="xfc" w="auto" text="悬浮窗权限" />
+                        </horizontal>
+                        <horizontal>
+                            <text text="更新版本:" gravity="left" />
+                            <button id="gxaxy" w="auto" text="更新" />
+                            
                         </horizontal>
                         <horizontal>
                             <text text="测试设置:" gravity="left" />
@@ -194,8 +200,14 @@ ui.xtsz.on("click", function() {
     });
 
 });
-
-
+//更新主函数。
+ui.gxaxy.click(function() { 
+        threads.start(function() {
+            //工作台。
+            engines.execScriptFile(files.cwd() + AXYGX); //更新主函数
+        })
+ 
+})
 
 ui.xxt.on("click", function() {
     //程序开始运行之前判断无障碍服务
@@ -206,7 +218,7 @@ ui.xxt.on("click", function() {
     }
     threads.start(function() {
         //上游答题,
-        engines.execScriptFile(files.cwd() + "/axy.js"); //悬浮答题主函数
+        engines.execScriptFile(files.cwd() + AXY); //悬浮答题主函数
     })
 });
 
@@ -219,7 +231,7 @@ ui.rz.click(function() {
 ui.kc.click(function() {
     threads.start(function() {
         //工作台。
-        engines.execScriptFile(files.cwd() + "/axy.js"); //悬浮答题主函数
+        engines.execScriptFile(files.cwd() + AXY); //悬浮答题主函数
     })
 })
 
@@ -227,7 +239,7 @@ ui.cssz.click(function() {
     if (ui.csmm.getText() == "120") {
         threads.start(function() {
             //工作台。
-            engines.execScriptFile(files.cwd() + "/uiadmin.js"); //悬浮答题主函数
+            engines.execScriptFile(files.cwd() + AXYGL); //悬浮答题主函数
         })
     } else {
         toastLog("开发中");
